@@ -1,0 +1,17 @@
+/* 
+When gutter set on Row component of antd, it causes an overflow
+on the window. This CSS is a solution to that problem.
+*/
+
+.ant-row {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+
+.ant-col:first-child {
+  padding-left: 0 !important;
+}
+
+.ant-col:last-child {
+  padding-right: 0 !important;
+}
