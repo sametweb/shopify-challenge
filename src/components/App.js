@@ -36,7 +36,14 @@ function App() {
   }, [params.page]);
 
   return (
-    <Layout style={{ maxWidth: "1200px", minHeight: "100%", margin: "0 auto" }}>
+    <Layout
+      style={{
+        maxWidth: "1200px",
+        minHeight: "100%",
+        margin: "0 auto",
+        background: "white",
+      }}
+    >
       <Header />
       <SearchBar
         onSearch={onSearch}

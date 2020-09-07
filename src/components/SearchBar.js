@@ -18,6 +18,7 @@ function SearchBar({ onSearch, params, onParamsChange }) {
             ? {
                 background: "#f0f2f5",
                 padding: "20px 0",
+                transition: "0.3s all",
               }
             : {}
         }
