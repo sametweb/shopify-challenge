@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 // antd components
-import { Col, Row, Button, Divider } from "antd";
+import { Col, Row, Button, Divider, Affix } from "antd";
 import { List } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
@@ -30,22 +30,26 @@ function NominatedMovieList() {
     <Col span={9}>
       <Row>
         <Col span={24}>
-          <Divider orientation="center">Your Nominations</Divider>
-          <List
-            locale={{ emptyText: "Your haven't nominated any movies yet" }}
-            itemLayout="horizontal"
-            dataSource={nominationsList}
-            renderItem={(item) => (
-              <List.Item actions={screens.md && [renderRemoveButton(item)]}>
-                <List.Item.Meta
-                  avatar={<MoviePoster title={item.Title} src={item.Poster} />}
-                  title={item.Title}
-                  description={item.Year}
-                />
-                {!screens.md && renderRemoveButton(item)}
-              </List.Item>
-            )}
-          />
+          <Affix offsetTop={70}>
+            <Divider orientation="center">Your Nominations</Divider>
+            <List
+              locale={{ emptyText: "Your haven't nominated any movies yet" }}
+              itemLayout="horizontal"
+              dataSource={nominationsList}
+              renderItem={(item) => (
+                <List.Item actions={screens.md && [renderRemoveButton(item)]}>
+                  <List.Item.Meta
+                    avatar={
+                      <MoviePoster title={item.Title} src={item.Poster} />
+                    }
+                    title={item.Title}
+                    description={item.Year}
+                  />
+                  {!screens.md && renderRemoveButton(item)}
+                </List.Item>
+              )}
+            />
+          </Affix>
         </Col>
       </Row>
     </Col>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 // antd components
-import { Row, Col, Divider } from "antd";
+import { Row, Col, Divider, Layout } from "antd";
 
 // utils & custom components
 import { searchMovies } from "../utils/actions";
@@ -36,7 +36,7 @@ function App() {
   }, [params.page]);
 
   return (
-    <>
+    <Layout style={{ maxWidth: "1200px", minHeight: "100%", margin: "0 auto" }}>
       <Header />
       <SearchBar
         onSearch={onSearch}
@@ -68,7 +68,7 @@ function App() {
         </Col>
         <NominatedMovieList />
       </Row>
-    </>
+    </Layout>
   );
 }
 
