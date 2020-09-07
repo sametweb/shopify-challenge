@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 // antd components
 import { Col, Row, Button, Divider } from "antd";
 import { List } from "antd";
+import { DeleteOutlined } from "@ant-design/icons";
+import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 
 // utils & custom components
 import { removeNomination } from "../utils/actions";
@@ -14,11 +16,18 @@ function NominatedMovieList() {
   const nominationsList = Object.values(nominations);
 
   const dispatch = useDispatch();
+  const screens = useBreakpoint();
 
   const onRemove = (id) => dispatch(removeNomination(id));
 
+  const renderRemoveButton = (item) => (
+    <Button type="danger" onClick={() => onRemove(item.imdbID)}>
+      <DeleteOutlined />
+    </Button>
+  );
+
   return (
-    <Col span={8}>
+    <Col span={9}>
       <Row>
         <Col span={24}>
           <Divider orientation="center">Your Nominations</Divider>
@@ -27,18 +36,13 @@ function NominatedMovieList() {
             itemLayout="horizontal"
             dataSource={nominationsList}
             renderItem={(item) => (
-              <List.Item
-                actions={[
-                  <Button type="danger" onClick={() => onRemove(item.imdbID)}>
-                    Remove
-                  </Button>,
-                ]}
-              >
+              <List.Item actions={screens.md && [renderRemoveButton(item)]}>
                 <List.Item.Meta
                   avatar={<MoviePoster title={item.Title} src={item.Poster} />}
                   title={item.Title}
                   description={item.Year}
                 />
+                {!screens.md && renderRemoveButton(item)}
               </List.Item>
             )}
           />

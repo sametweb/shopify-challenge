@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 // antd components
 import { Col, Row, Button, Divider, message, List, Modal } from "antd";
+import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
+import { PlusOutlined } from "@ant-design/icons";
 
 // utils & custom components
 import { nominate } from "../utils/actions";
@@ -10,12 +12,12 @@ import MoviePoster from "./MoviePoster";
 
 function SearchResults({ searchResults, searching }) {
   const dispatch = useDispatch();
+  const screens = useBreakpoint();
+
   const [showModal, setShowModal] = useState(false);
 
   const nominations = useSelector((state) => state.nominations);
-
   const totalNominations = Object.values(nominations).length;
-
   const isLimitReached = !(totalNominations < 5);
 
   const onNominate = (movie) => {
@@ -26,12 +28,22 @@ function SearchResults({ searchResults, searching }) {
     }
   };
 
+  const renderNominateButton = (movie) => (
+    <Button
+      disabled={isLimitReached || movie.imdbID in nominations}
+      type="primary"
+      onClick={() => onNominate(movie)}
+    >
+      {screens.md ? "Nominate" : <PlusOutlined />}
+    </Button>
+  );
+
   useEffect(() => {
     isLimitReached && setShowModal(true);
   }, [isLimitReached]);
 
   return (
-    <Col span={11}>
+    <Col span={13}>
       <Row>
         <Col span={24}>
           <Divider orientation="center">Search Results</Divider>
@@ -43,17 +55,7 @@ function SearchResults({ searchResults, searching }) {
             itemLayout="horizontal"
             dataSource={searchResults.Search}
             renderItem={(movie) => (
-              <List.Item
-                actions={[
-                  <Button
-                    disabled={isLimitReached || movie.imdbID in nominations}
-                    type="primary"
-                    onClick={() => onNominate(movie)}
-                  >
-                    Nominate
-                  </Button>,
-                ]}
-              >
+              <List.Item actions={[renderNominateButton(movie)]}>
                 <List.Item.Meta
                   avatar={
                     <MoviePoster title={movie.Title} src={movie.Poster} />
@@ -61,6 +63,7 @@ function SearchResults({ searchResults, searching }) {
                   title={movie.Title}
                   description={movie.Year}
                 />
+                <br />
               </List.Item>
             )}
           />

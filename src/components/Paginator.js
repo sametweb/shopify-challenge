@@ -9,6 +9,7 @@ function Paginator({ totalMovies, currentPage, onParamsChange }) {
   return (
     <>
       <Pagination
+        simple
         current={currentPage}
         onChange={(page, _) => onParamsChange({ page })}
         total={totalMovies}

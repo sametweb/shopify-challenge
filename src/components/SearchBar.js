@@ -2,22 +2,22 @@ import React from "react";
 
 // antd components
 import { Col, Input, Select, Button, Row } from "antd";
-import { SearchOutlined } from "@ant-design/icons";
 
 // utils & custom components
 
 function SearchBar({ onSearch, params, onParamsChange }) {
   return (
-    <Row justify="center" gutter={10}>
-      <Col span={12}>
+    <Row justify="center" gutter={[10, 10]}>
+      <Col md={11} xs={23}>
         <Input
+          autoFocus={true}
           placeholder="Search in movie titles"
           size="large"
           value={params.s}
           onChange={(e) => onParamsChange({ s: e.target.value })}
         />
       </Col>
-      <Col span={4}>
+      <Col md={5} xs={9}>
         <Input
           placeholder="Year"
           size="large"
@@ -25,7 +25,7 @@ function SearchBar({ onSearch, params, onParamsChange }) {
           onChange={(e) => onParamsChange({ y: e.target.value })}
         />
       </Col>
-      <Col span={2}>
+      <Col md={4} xs={9}>
         <Select
           size="large"
           onChange={(type) => onParamsChange({ type })}
@@ -37,11 +37,10 @@ function SearchBar({ onSearch, params, onParamsChange }) {
           <Select.Option value="episode">Episode</Select.Option>
         </Select>
       </Col>
-      <Col span={2}>
+      <Col md={3} xs={5}>
         <Button
           type="primary"
           size="large"
-          icon={<SearchOutlined />}
           onClick={() => onSearch(params)}
           style={{ width: "100%" }}
         >

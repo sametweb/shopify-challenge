@@ -44,7 +44,7 @@ function App() {
         onParamsChange={onParamsChange}
       />
       <Row justify="center">
-        <Col span={24}>
+        <Col span={23}>
           <Divider />
         </Col>
         {searchResults.Search.length > 0 && (
