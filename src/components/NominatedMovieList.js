@@ -30,7 +30,7 @@ function NominatedMovieList() {
     <Col span={9}>
       <Row>
         <Col span={24}>
-          <Affix offsetTop={70}>
+          <Affix offsetTop={75}>
             <Divider orientation="center">Your Nominations</Divider>
             <List
               locale={{ emptyText: "Your haven't nominated any movies yet" }}

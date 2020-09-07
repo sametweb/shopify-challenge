@@ -27,7 +27,7 @@ function App() {
 
   const dispatch = useDispatch();
 
-  const onSearch = (params) => dispatch(searchMovies(params));
+  const onSearch = (params) => params.s && dispatch(searchMovies(params));
 
   const onParamsChange = (param) => setParams({ ...params, ...param });
 

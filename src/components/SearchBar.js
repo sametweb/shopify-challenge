@@ -24,21 +24,38 @@ function SearchBar({ onSearch, params, onParamsChange }) {
         }
       >
         <Col md={11} xs={23}>
-          <Input
-            autoFocus={true}
-            placeholder="Search in movie titles"
-            size="large"
-            value={params.s}
-            onChange={(e) => onParamsChange({ s: e.target.value })}
-          />
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              onSearch(params);
+            }}
+          >
+            <Input
+              name="search"
+              autoFocus={true}
+              placeholder="Search in movie titles"
+              size="large"
+              value={params.s}
+              onChange={(e) => onParamsChange({ s: e.target.value })}
+            />
+          </form>
         </Col>
         <Col md={5} xs={9}>
-          <Input
-            placeholder="Year"
-            size="large"
-            value={params.y}
-            onChange={(e) => onParamsChange({ y: e.target.value })}
-          />
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              onSearch(params);
+            }}
+          >
+            <Input
+              name="year"
+              placeholder="Year"
+              size="large"
+              type="number"
+              value={params.y}
+              onChange={(e) => onParamsChange({ y: e.target.value })}
+            />
+          </form>
         </Col>
         <Col md={4} xs={9}>
           <Select
