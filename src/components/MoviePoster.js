@@ -1,9 +1,14 @@
 import React from "react";
+
+// antd components
 import { Image } from "antd";
+
+// utils & custom components
 
 function MoviePoster({ title, src }) {
   return (
     <Image
+      style={{ cursor: "zoom-in" }}
       alt={title}
       width={80}
       src={src}

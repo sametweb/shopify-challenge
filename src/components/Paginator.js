@@ -1,7 +1,11 @@
 import React from "react";
+
+// antd components
 import { Pagination, Col, Divider } from "antd";
 
-function Navigation({ totalMovies, currentPage, onParamsChange }) {
+// utils & custom components
+
+function Paginator({ totalMovies, currentPage, onParamsChange }) {
   return (
     <>
       <Pagination
@@ -9,7 +13,7 @@ function Navigation({ totalMovies, currentPage, onParamsChange }) {
         onChange={(page, _) => onParamsChange({ page })}
         total={totalMovies}
         showSizeChanger={false}
-        showTotal={(total) => `Total ${total} movies`}
+        showTotal={(total) => `Total ${total} results`}
       />
       <Col span={24}>
         <Divider />
@@ -18,4 +22,4 @@ function Navigation({ totalMovies, currentPage, onParamsChange }) {
   );
 }
 
-export default Navigation;
+export default Paginator;

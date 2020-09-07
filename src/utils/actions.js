@@ -5,6 +5,7 @@ export const SEARCH_MOVIES_NOT_FOUND = "SEARCH_MOVIES_NOT_FOUND";
 export const SEARCH_MOVIES_SUCCESS = "SEARCH_MOVIES_SUCCESS";
 export const SEARCH_MOVIES_ERROR = "SEARCH_MOVIES_ERROR";
 export const NOMINATE = "NOMINATE";
+export const REMOVE_NOMINATION = "REMOVE_NOMINATION";
 
 export const searchMovies = (params) => (dispatch) => {
   dispatch({ type: SEARCH_MOVIES_START });
@@ -23,3 +24,8 @@ export const searchMovies = (params) => (dispatch) => {
 };
 
 export const nominate = (movie) => ({ type: NOMINATE, payload: movie });
+
+export const removeNomination = (imdbID) => ({
+  type: REMOVE_NOMINATION,
+  payload: imdbID,
+});

@@ -1,5 +1,9 @@
 import React from "react";
+
+// antd components
 import { Col, PageHeader, Row } from "antd";
+
+// utils & custom components
 
 function Header() {
   return (
@@ -7,7 +11,7 @@ function Header() {
       <Col span={20}>
         <PageHeader
           className="site-page-header"
-          title="Shoppies"
+          title="The Shoppies"
           subTitle="Nominate your favorite movies"
         />
       </Col>

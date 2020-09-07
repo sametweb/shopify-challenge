@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
+
+// antd components
 import { Col, Input, Select, Button, Row } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
+
+// utils & custom components
 
 function SearchBar({ onSearch, params, onParamsChange }) {
   return (
@@ -39,6 +43,7 @@ function SearchBar({ onSearch, params, onParamsChange }) {
           size="large"
           icon={<SearchOutlined />}
           onClick={() => onSearch(params)}
+          style={{ width: "100%" }}
         >
           Search
         </Button>

@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { searchMovies } from "../utils/actions";
 
+// antd components
 import { Row, Col, Divider } from "antd";
 
+// utils & custom components
+import { searchMovies } from "../utils/actions";
 import Header from "./Header";
 import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
-import Nominated from "./Nominated";
+import Paginator from "./Paginator";
+import NominatedMovieList from "./NominatedMovieList";
 import NotFound from "./NotFound";
-import Navigation from "./Navigation";
 
 function App() {
   const [params, setParams] = useState({
@@ -47,13 +49,15 @@ function App() {
         </Col>
         {searchResults.Search.length > 0 && (
           <Col span={24} style={{ textAlign: "center" }}>
-            <Navigation
+            <Paginator
               totalMovies={searchResults.totalResults}
               currentPage={params.page}
               onParamsChange={onParamsChange}
             />
           </Col>
         )}
+      </Row>
+      <Row justify="center">
         {error ? (
           <NotFound error={error} />
         ) : (
@@ -62,7 +66,7 @@ function App() {
         <Col span={1} style={{ textAlign: "center" }}>
           <Divider type="vertical" style={{ height: "100% " }} />
         </Col>
-        <Nominated />
+        <NominatedMovieList />
       </Row>
     </>
   );
