@@ -1,5 +1,7 @@
 ## Shopify Challenge: The Shoppies
 
+### <p align="center">[Click for Demo Link](https://shopify-challenge.vercel.app)</p>
+
 - User can search through OMDB movie database by title, year, and production type (movie, series, episode)
 - User can nominate a movie for the major event
 - Nominations will show on the right side of the screen
