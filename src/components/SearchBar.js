@@ -36,7 +36,7 @@ function SearchBar({ onSearch, params, onParamsChange }) {
               placeholder="Search in movie titles"
               size="large"
               value={params.s}
-              onChange={(e) => onParamsChange({ s: e.target.value })}
+              onChange={(e) => onParamsChange({ s: e.target.value, page: 1 })}
             />
           </form>
         </Col>
@@ -53,14 +53,14 @@ function SearchBar({ onSearch, params, onParamsChange }) {
               size="large"
               type="number"
               value={params.y}
-              onChange={(e) => onParamsChange({ y: e.target.value })}
+              onChange={(e) => onParamsChange({ y: e.target.value, page: 1 })}
             />
           </form>
         </Col>
         <Col md={4} xs={9}>
           <Select
             size="large"
-            onChange={(type) => onParamsChange({ type })}
+            onChange={(type) => onParamsChange({ type, page: 1 })}
             value={params.type}
             style={{ width: "100%" }}
           >
